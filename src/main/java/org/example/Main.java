@@ -1,17 +1,35 @@
 package org.example;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+import java.util.ArrayList;
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+        ArrayList<Animal> animals = new ArrayList<>();
+        Scanner scanner = new Scanner(System.in);
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
+        System.out.println("Animal Menu");
+        System.out.println("Entering nothing will stop the loop");
+
+        while (true) {
+            System.out.print("Please enter a name: ");
+            String name = scanner.nextLine();
+
+            if (name.isEmpty()) {
+                break;
+            }
+
+            System.out.print("Is it a dog? Yes or no: ");
+            String isDogStr = scanner.nextLine().toLowerCase();
+            boolean isDog = isDogStr.equals("yes");
+
+            Animal animal = new Animal(name, isDog);
+            animals.add(animal);
+        }
+
+        System.out.println("List of animals:");
+        for (Animal animal : animals) {
+            System.out.println(animal);
         }
     }
 }
